@@ -2,32 +2,33 @@ package org.example.task2;
 
 public class Order {
 
-    public long id;
-    public String customer;
+    private long id;
+    private String customer;
 
-    public Order(long id, String customer) {
+    public Order(final long id, final String customer) {
         this.id = id;
         this.customer = customer;
     }
 
-    public String formOrderBill(Cart cart) {
+    public String formOrderBill(final Cart cart) {
 
         StringBuilder builder = new StringBuilder();
-        builder.append("Order number ").append(id).append(" for customer ").append(customer);
-        builder.append("\n------------------\n");
+        builder.append("Order number ").append(this.id)
+                .append(" for customer ").append(this.customer)
+                .append("\n------------------\n");
 
         double sum = 0.0;
 
-        for (int i = 0; i < cart.index; i++) {
+        for (int i = 0; i < cart.getIndex(); i++) {
 
-            sum += cart.contents[i].price;
+            Item item = cart.getContents()[i];
+            sum += item.getPrice();
 
-            builder.append("Item id: ");
-            builder.append(cart.contents[i].id);
+            builder.append("Item id: ").append(item.getId());
             builder.append(" name: ");
-            builder.append(cart.contents[i].name);
+            builder.append(item.getName());
             builder.append(" price: ");
-            builder.append(cart.contents[i].price);
+            builder.append(item.getPrice());
             builder.append("\n");
         }
 

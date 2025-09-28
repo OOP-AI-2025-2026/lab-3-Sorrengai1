@@ -1,69 +1,75 @@
-package org.example.task2;
+    package org.example.task2;
 
-import java.util.Arrays;
+    import java.util.Arrays;
 
-public class Cart {
+    public class Cart {
 
-    public Item[] contents;
-    int index;
+        private Item[] contents;
+        private int index;
 
-    Cart(Item[] _contents) {
-        this.contents = _contents;
-    }
-
-    public void removeById(int itemIndex) {
-
-        if (index == 0)
-            return;
-
-        int foundItemIndex = findItemInArray(contents[itemIndex]);
-
-        if (foundItemIndex == -1)
-            return;
-
-        if (foundItemIndex == index - 1) {
-            contents[index - 1] = null;
-            index--;
-            return;
+        public Cart(final Item[] contents) {
+            this.contents = contents;
+        }
+        public Item[] getContents() {
+            return this.contents;
+        }
+        public int getIndex() {
+            return this.index;
         }
 
-        shiftArray(foundItemIndex);
-    }
+        public void removeById(final int itemIndex) {
 
-    public void shiftArray(int itemIndex) {
-        for (int i = itemIndex; i < index - 1; i++) {
-            contents[i] = contents[i + 1];
-        }
-        contents[index-1] = null;
-        index--;
-    }
-
-    public int findItemInArray(Item item) {
-        for (int i = 0; i < index; i++) {
-            if (contents[i].id == item.id) {
-                return i;
+            if (index == 0) {
+                return;
             }
+            int foundItemIndex = findItemInArray(this.contents[itemIndex]);
+
+            if (foundItemIndex == - 1) {
+                return;
+            }
+            if (foundItemIndex == this.index - 1) {
+                this.contents[this.index - 1] = null;
+                this.index--;
+                return;
+            }
+
+            shiftArray(foundItemIndex);
         }
 
-        return -1;
-    }
+        public void shiftArray(final int itemIndex) {
+            for (int i = itemIndex; i < this.index - 1; i++) {
+                this.contents[i] = this.contents[i + 1];
+            }
+            this.contents[this.index - 1] = null;
+            this.index--;
+        }
 
-    void add(Item item) {
-        if (isCartFull())
-            return;
+        public int findItemInArray(final Item item) {
+            for (int i = 0; i < this.index; i++) {
+                if (this.contents[i].getId() == item.getId()) {
+                    return i;
+                }
+            }
 
-        contents[index] = item;
-        index++;
-    }
+            return -1;
+        }
 
-    public boolean isCartFull() {
-        return index == contents.length;
-    }
+        void add(final Item item) {
+            if (isCartFull()) {
+                return;
+            }
+            this.contents[this.index] = item;
+            this.index++;
+        }
 
-    @Override
-    public String toString() {
-        return "Cart{" +
-                "contents=" + Arrays.toString(contents) +
-                '}' + "\n";
+        public boolean isCartFull() {
+            return this.index == this.contents.length;
+        }
+
+        @Override
+        public String toString() {
+            return "Cart{"
+                    + "contents=" + Arrays.toString(this.contents)
+                    + '}' + "\n";
+        }
     }
-}
