@@ -23,9 +23,13 @@ public final class IntStack {
      */
     public void push(final int value) {
         if (top == items.length - 1) {
-            return;
+            int[] newItems = new int[this.items.length * 2];
+            for (int i = 0; i < this.items.length; i++) {
+                newItems[i] = this.items[i];
+            }
+            this.items = newItems;
         }
-        items[++top] = value;
+        this.items[++this.top] = value;
     }
     /**
      * @return елемент з вершини стеку або 0(якщо стек порожній)
