@@ -24,11 +24,11 @@ public class Order {
             Item item = cart.getContents()[i];
             sum += item.getPrice();
 
-            builder.append("Item id: ").append(item.id);
+            builder.append("Item id: ").append(item.getId());
             builder.append(" name: ");
-            builder.append(item.name);
+            builder.append(item.getName());
             builder.append(" price: ");
-            builder.append(item.price);
+            builder.append(item.getPrice());
             builder.append("\n");
         }
 

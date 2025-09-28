@@ -14,10 +14,10 @@ public class Item {
     public long getId() {
         return this.id;
     }
-    public long getName() {
+    public String getName() {
         return this.name;
     }
-    public long getPrice() {
+    public double getPrice() {
         return this.price;
     }
 
