@@ -41,7 +41,7 @@ public final class Box {
     }
     /**
      * @return об'єм коробки
-     * */
+      */
     public double getVolume() {
         return length * width * height;
     }
